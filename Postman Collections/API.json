@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "d3bca80e-b018-4fec-b226-a42f52610313",
+		"name": "PracticeSoftwareTesting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RegisterUser-ExistingEmail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0b47db36-e42f-4250-94db-7dc0af8e6708",
+						"exec": [
+							"pm.test(\"Register user - existing email\", () => {\r",
+							"    pm.response.to.have.status(422);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "3d69ca2c-142d-465d-a6d8-5b77c7aab357",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"first_name\": \"User1\",\r\n  \"last_name\": \"User1\",\r\n  \"address\": \"Belgrade\",\r\n  \"city\": \"Belgrade\",\r\n  \"state\": \"N/A\",\r\n  \"country\": \"Serbia\",\r\n  \"postcode\": \"11000\",\r\n  \"phone\": \"0641111111\",\r\n  \"dob\": \"1970-01-01\",\r\n  \"email\": \"demosanja994@gmail.com\",\r\n  \"password\":\"Test123#\",\r\n  \"id\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.practicesoftwaretesting.com/users/register"
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterUser-ValidInformation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d2553168-9a3c-49a7-afe3-e109acbb64b0",
+						"exec": [
+							"pm.test(\"Register user - valid information\", () => {\r",
+							"    pm.response.to.have.status(201);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "46c9509c-74b3-4525-969f-07bc88bd3243",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"first_name\": \"User1\",\r\n  \"last_name\": \"User1\",\r\n  \"address\": \"Belgrade\",\r\n  \"city\": \"Belgrade\",\r\n  \"state\": \"N/A\",\r\n  \"country\": \"Serbia\",\r\n  \"postcode\": \"11000\",\r\n  \"phone\": \"0641111111\",\r\n  \"dob\": \"1970-01-01\",\r\n  \"email\": \"demosanja994@gmail.com\",\r\n  \"password\":\"Test123#\",\r\n  \"id\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.practicesoftwaretesting.com/users/register"
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterUser-BlankfieldPassword",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "01c5eba0-4fe3-4838-a13a-c20a6e3ab725",
+						"exec": [
+							"pm.test(\"Register user - blank field Password\", () => {\r",
+							"    pm.response.to.have.status(422);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "d2e2772a-dec7-4d4a-a07b-0ed2146d211e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"first_name\": \"User1\",\r\n  \"last_name\": \"User1\",\r\n  \"address\": \"Belgrade\",\r\n  \"city\": \"Belgrade\",\r\n  \"state\": \"N/A\",\r\n  \"country\": \"Serbia\",\r\n  \"postcode\": \"11000\",\r\n  \"phone\": \"0641111111\",\r\n  \"dob\": \"1970-01-01\",\r\n  \"email\": \"demouser044@gmail.com\",\r\n  \"id\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.practicesoftwaretesting.com/users/register"
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterUser-InvalidEmail-BUG",
+			"id": "f49e7e05-7d5d-4caa-b1b0-348c97495126",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "https://api.practicesoftwaretesting.com/users/register"
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterUser-InvalidFormatPassword_4characters-BUG",
+			"id": "6d317024-9e84-4af5-9a89-c43115b0c270",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "https://api.practicesoftwaretesting.com/users/register"
+			},
+			"response": []
+		},
+		{
+			"name": "Login-ValidInformation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ad9f1cab-df3e-433c-b2b2-4396b6f9e470",
+						"exec": [
+							"pm.test(\"Login - Valid information\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "81906829-d9a6-4a09-8cf3-25bf0bb77414",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"demosanja994@gmail.com\",\r\n  \"password\": \"Test123#\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.practicesoftwaretesting.com/users/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login-InvalidPassword",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5eb0069e-c110-4a5c-a9f7-7d52fa461de7",
+						"exec": [
+							"pm.test(\"Login - Inalid password\", () => {\r",
+							"    pm.response.to.have.status(401);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "9564177b-54ed-4a16-8930-9ba5fbc6117c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"demosanja994@gmail.com\",\r\n  \"password\": \"Test123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.practicesoftwaretesting.com/users/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login-BlankFieldEmail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cf1814d9-b3bc-44ab-a237-5e2e643994bb",
+						"exec": [
+							"pm.test(\"Login - Blank field email\", () => {\r",
+							"    pm.response.to.have.status(401);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "85b7dd55-3ed5-4488-83c3-a57b64bcdd7e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"\",\r\n  \"password\": \"Test123#\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.practicesoftwaretesting.com/users/login"
+			},
+			"response": []
+		},
+		{
+			"name": "GetUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "090811ff-3e77-4e46-9af8-1232eadaef99",
+						"exec": [
+							"pm.test(\"Get User - Unauthorized\", () => {\r",
+							"    pm.response.to.have.status(401);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "d8c4d783-3389-47f1-b91c-99d00269d68c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n  {\r\n    \"first_name\": \"John\",\r\n    \"last_name\": \"Doe\",\r\n    \"address\": \"Street 1\",\r\n    \"city\": \"City\",\r\n    \"state\": \"State\",\r\n    \"country\": \"Country\",\r\n    \"postcode\": \"1234AA\",\r\n    \"phone\": \"0987654321\",\r\n    \"dob\": \"1970-01-01\",\r\n    \"email\": \"john@doe.example\",\r\n    \"id\": \"string\"\r\n  }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.practicesoftwaretesting.com/users"
+			},
+			"response": []
+		}
+	]
+}
