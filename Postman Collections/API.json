@@ -282,6 +282,18 @@
 				"url": "https://api.practicesoftwaretesting.com/users"
 			},
 			"response": []
+		},
+		{
+			"name": "AddItemToCart",
+			"id": "91bcb552-3398-4a70-862f-88bf8aa9a32c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	]
 }
