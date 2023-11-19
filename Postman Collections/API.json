@@ -284,8 +284,44 @@
 			"response": []
 		},
 		{
-			"name": "AddItemToCart",
+			"name": "ListOfAllProducts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d8017384-80ea-4251-9dd9-9a5ea75c49d0",
+						"exec": [
+							"pm.test(\"List of all products\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "91bcb552-3398-4a70-862f-88bf8aa9a32c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.practicesoftwaretesting.com/products"
+			},
+			"response": []
+		},
+		{
+			"name": "AddItemToCart",
+			"id": "bafedd63-2f4e-4885-a521-549a490cde3a",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
