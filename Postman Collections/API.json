@@ -6,22 +6,22 @@
 	},
 	"item": [
 		{
-			"name": "RegisterUser-ExistingEmail",
+			"name": "RegisterUser-ValidInformation",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "0b47db36-e42f-4250-94db-7dc0af8e6708",
+						"id": "d2553168-9a3c-49a7-afe3-e109acbb64b0",
 						"exec": [
-							"pm.test(\"Register user - existing email\", () => {\r",
-							"    pm.response.to.have.status(422);\r",
+							"pm.test(\"Register user - valid information\", () => {\r",
+							"    pm.response.to.have.status(201);\r",
 							"})"
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
-			"id": "3d69ca2c-142d-465d-a6d8-5b77c7aab357",
+			"id": "46c9509c-74b3-4525-969f-07bc88bd3243",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -42,22 +42,22 @@
 			"response": []
 		},
 		{
-			"name": "RegisterUser-ValidInformation",
+			"name": "RegisterUser-ExistingEmail-BUG",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "d2553168-9a3c-49a7-afe3-e109acbb64b0",
+						"id": "0b47db36-e42f-4250-94db-7dc0af8e6708",
 						"exec": [
-							"pm.test(\"Register user - valid information\", () => {\r",
-							"    pm.response.to.have.status(201);\r",
+							"pm.test(\"Register user - existing email\", () => {\r",
+							"    pm.response.to.have.status(422);\r",
 							"})"
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
-			"id": "46c9509c-74b3-4525-969f-07bc88bd3243",
+			"id": "3d69ca2c-142d-465d-a6d8-5b77c7aab357",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -284,8 +284,195 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "ListOfAllBrands_InvalidURL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cc62857f-723f-43db-af24-b2c57d0f3b7c",
+						"exec": [
+							"pm.test(\"List of all brands - Invalid URL\", () => {\r",
+							"    pm.response.to.have.status(404);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "899659f4-326e-4a6d-b99b-01a9ceef918d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.practicesoftwaretesting.com/brands/bb"
+			},
+			"response": []
+		},
+		{
+			"name": "AddNewBrand",
+			"id": "110c02ee-f65b-40c4-b7b1-ffe9aa6dc3fe",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "ListOfAllBrands",
 			"id": "9cace3c8-705e-4384-99d2-c8fe36bfacaa",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://api.practicesoftwaretesting.com/brands"
+			},
+			"response": []
+		},
+		{
+			"name": "AddNewBrand-InvalidURL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9b9db0ef-c65c-4fc4-9b6a-df6fe7584796",
+						"exec": [
+							"pm.test(\"Add new brand - Invalid URL\", () => {\r",
+							"    pm.response.to.have.status(405);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "adbbd6b2-5d1c-4668-9930-f4ab3292c2a5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"DemoBrand1\",\r\n  \"slug\": \"demo-brand\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.practicesoftwaretesting.com/brands/we"
+			},
+			"response": []
+		},
+		{
+			"name": "AddNewBrand-ExistingSlug",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f415510b-e379-407e-a6d3-b20bee67e729",
+						"exec": [
+							"pm.test(\"Add new brand - Existing Slug\", () => {\r",
+							"    pm.response.to.have.status(422);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "5ad777a7-229f-4163-87a2-0d7ae7431cfa",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"DemoBrand1\",\r\n  \"slug\": \"demo-brand\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.practicesoftwaretesting.com/brands"
+			},
+			"response": []
+		},
+		{
+			"name": "GetBrandWithValidID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9514703c-585c-4ac5-9e3c-90263aaec239",
+						"exec": [
+							"pm.test(\"Get Brand with Valid ID\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "c4e3aa58-170e-4284-9d07-abafc381eb0a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://api.practicesoftwaretesting.com/brands/01HFNVWTJZ5G8HQ56R22VC6FY6"
+			},
+			"response": []
+		},
+		{
+			"name": "GetBrandWithInvalidID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3e80c9bd-9648-4f88-941a-ffa452f5c579",
+						"exec": [
+							"pm.test(\"Get Brand with Valid ID\", () => {\r",
+							"    pm.response.to.have.status(404);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "183ede5f-e5f4-4baa-adb1-1e842fe29401",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://api.practicesoftwaretesting.com/brands/1"
+			},
+			"response": []
+		},
+		{
+			"name": "GetBrandInvalidURL",
+			"id": "95c31498-ec15-47e0-84e8-0c0d62e24696",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
