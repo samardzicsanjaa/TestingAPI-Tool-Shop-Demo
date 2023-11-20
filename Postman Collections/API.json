@@ -333,6 +333,20 @@
 		},
 		{
 			"name": "ListOfAllBrands",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c65139a6-b5f5-4d6b-a2bb-ae2aaa136a3f",
+						"exec": [
+							"pm.test(\"List of all brands\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "9cace3c8-705e-4384-99d2-c8fe36bfacaa",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -451,7 +465,7 @@
 					"script": {
 						"id": "3e80c9bd-9648-4f88-941a-ffa452f5c579",
 						"exec": [
-							"pm.test(\"Get Brand with Valid ID\", () => {\r",
+							"pm.test(\"Get Brand with Invalid ID\", () => {\r",
 							"    pm.response.to.have.status(404);\r",
 							"})"
 						],
@@ -471,14 +485,167 @@
 			"response": []
 		},
 		{
-			"name": "GetBrandInvalidURL",
+			"name": "UpdateBrand",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "99de7663-a218-425a-8079-b02434dea251",
+						"exec": [
+							"pm.test(\"Update brand - Body message is true.\", () => {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"success\": true\r",
+							"})\r",
+							"\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "95c31498-ec15-47e0-84e8-0c0d62e24696",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"DemoBrand123\",\r\n  \"slug\": \"demo-brand123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.practicesoftwaretesting.com/brands/01hfnznxen0b0dphvktpkq2zth"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateNonExistingBrand - BUG",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9bffcf82-2622-4f8c-96e8-9390e6ac5619",
+						"exec": [
+							"pm.test(\"Update brand - Not found.\", () => {\r",
+							"    pm.response.to.have.status(404)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "533abd45-12c4-4ed5-a60a-1ed8a2ff923a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"DemoBrand\",\r\n  \"slug\": \"demo-brand\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.practicesoftwaretesting.com/brands/1"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateBrand-InvalidURL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "72f64743-4821-45fc-8427-b81ec490bc8e",
+						"exec": [
+							"pm.test(\"Update Brand - Invalid URL\", () => {\r",
+							"    pm.response.to.have.status(405);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "942754a5-01a0-4366-9baa-b512cc409d7a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"DemoBrand1234\",\r\n  \"slug\": \"demo-brand1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://api.practicesoftwaretesting.com/brands"
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteBrand",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4e5610cc-ea06-49fb-88f0-52e8ee9f24a3",
+						"exec": [
+							"pm.test(\"Delete Brand\", () => {\r",
+							"    pm.response.to.have.status(401);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "36027cab-7a26-419a-bc31-e5ddda3a8e30",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "https://api.practicesoftwaretesting.com/brands/01hfnznxen0b0dphvktpkq2zth"
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteNonExistingBrand",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "743ba762-78de-4da6-9692-1dbdc114317f",
+						"exec": [
+							"pm.test(\"Users Refresh\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "197dc052-afe3-41cf-a9d5-92c0cbf8ca3c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": "https://api.practicesoftwaretesting.com/users/refresh"
 			},
 			"response": []
 		}
